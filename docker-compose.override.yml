@@ -3,6 +3,9 @@ version: "3.4"
 # Development environment override
 services:
   php:
+    env_file:
+      - .env
+      - .env.local
     build:
       target: app_php_dev
     volumes:
@@ -26,3 +29,12 @@ services:
 
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+
+###> doctrine/doctrine-bundle ###
+  database:
+    env_file:
+      - .env
+      - .env.local
+    ports:
+      - "3306"
+###< doctrine/doctrine-bundle ###
